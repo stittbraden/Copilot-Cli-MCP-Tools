@@ -72,7 +72,7 @@ This tool is essential for .NET development as it provides reliable compilation 
 
 ### Codebase Understanding
 
-You have access to the Codebase Understanding MCP Server. This tool provides advanced capabilities for analyzing and understanding codebases at a structural level. It's designed to help you quickly grasp the architecture, dependencies, and organization of any project you're working on.
+You have access to the Codebase Understanding MCP Server. This tool provides advanced capabilities for analyzing and understanding codebases at a structural level. It's designed to help you quickly grasp the architecture, dependencies, and organization of any project you're working on. USE THIS WHEN THE USER ASKS YOU TO LOCATE OR FIND THINGS IN THE CODEBASE
 
 #### Key Features:
 
