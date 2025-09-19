@@ -1,0 +1,81 @@
+{
+  "mcpServers": {
+    "enhanced-deep-search": {
+      "command": "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/venv/bin/python",
+      "args": [
+        "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/mcp_servers/deep_search/src/server.py"
+      ],
+      "env": {},
+      "description": "🚀 Enhanced Deep Search - Multi-source intelligent code search that surpasses VSCode Copilot capabilities",
+      "capabilities": {
+        "tools": [
+          {
+            "name": "smart_code_search",
+            "description": "🔍 Multi-source intelligent search combining Stack Overflow, GitHub, local files with context awareness"
+          },
+          {
+            "name": "quick_search",
+            "description": "⚡ Fast search for immediate code help and examples from Stack Overflow"
+          },
+          {
+            "name": "analyze_code_context",
+            "description": "🧠 Deep code analysis with AST parsing and smart search suggestions"
+          },
+          {
+            "name": "refine_search",
+            "description": "🎯 Interactive search refinement based on user feedback"
+          },
+          {
+            "name": "deep_search",
+            "description": "🌐 Advanced web crawling with intelligent content discovery"
+          }
+        ]
+      }
+    },
+    "boilerplate": {
+      "command": "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/venv/bin/python",
+      "args": [
+        "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/mcp_servers/boilerplate/src/server.py"
+      ],
+      "env": {},
+      "description": "Simple boilerplate MCP server with greeting functionality"
+    },
+    "simple-crawler": {
+      "command": "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/venv/bin/python",
+      "args": [
+        "/Users/bradenstitt/projects/Copilot-Cli-MCP-Tools/mcp_servers/simple_crawler/src/server.py"
+      ],
+      "env": {},
+      "description": "Simple web crawler MCP server"
+    }
+  },
+  "globalSettings": {
+    "logLevel": "info",
+    "timeout": 30000
+  },
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Copilot CLI MCP Tools",
+    "description": "A collection of enhanced MCP servers for GitHub Copilot CLI",
+    "author": "Enhanced by AI Assistant",
+    "repository": "https://github.com/your-username/Copilot-Cli-MCP-Tools",
+    "features": [
+      "Multi-source code search (Stack Overflow + GitHub + Local files)",
+      "Context-aware workspace analysis",
+      "Interactive search refinement",
+      "Deep code analysis with AST parsing",
+      "Advanced web crawling",
+      "Language-specific optimizations",
+      "Real-time result ranking"
+    ],
+    "advantages_over_vscode_copilot": [
+      "Searches multiple authoritative sources simultaneously",
+      "Understands workspace context and dependencies", 
+      "Provides interactive search refinement",
+      "Extracts and ranks actual code snippets",
+      "Offers context-aware suggestions",
+      "Supports 9+ programming languages with specialized parsing",
+      "Provides source attribution and relevance scoring"
+    ]
+  }
+}
