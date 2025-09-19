@@ -1,11 +1,17 @@
-import asyncio
-import subprocess
+#!/usr/bin/env python3
+"""
+Test script for Azure .NET QuickBuild MCP server functionality.
+This script tests the core logic without requiring MCP client infrastructure.
+"""
+
+import sys
 import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+# Import the raw function before it gets decorated
+import subprocess
 import re
 from typing import Dict, List, Optional
-from fastmcp import FastMCP
-
-mcp = FastMCP("Azure Net Quickbuild MCP Server")
 
 class QuickBuildError:
     def __init__(self, file_path: str, line_number: Optional[int], error_message: str):
@@ -20,25 +26,8 @@ class QuickBuildError:
             "message": self.error_message
         }
 
-@mcp.tool
-def azure_net_quickbuild(
-    project_directory: str,
-    timeout_minutes: int = 10
-) -> Dict:
-    """
-    Runs Azure .NET QuickBuild in debug mode to test project compilation.
-    
-    Args:
-        project_directory: The absolute path to the directory containing the .NET project
-        timeout_minutes: Maximum time to wait for build completion (default: 10 minutes)
-    
-    Returns:
-        Dict containing:
-        - success: bool indicating if build succeeded
-        - errors: List of error objects with file, line, and message
-        - raw_output: The complete build output for debugging
-        - status: Human-readable status message
-    """
+def azure_net_quickbuild_raw(project_directory: str, timeout_minutes: int = 10) -> Dict:
+    """Raw version of the function for testing purposes."""
     
     # Validate directory exists
     if not os.path.exists(project_directory):
@@ -117,14 +106,7 @@ def azure_net_quickbuild(
         }
 
 def _parse_build_errors(build_output: str) -> List[QuickBuildError]:
-    """
-    Parse the build output to extract compilation errors.
-    
-    This function looks for common .NET compilation error patterns:
-    - CS#### errors
-    - File paths with line numbers
-    - Error messages
-    """
+    """Parse the build output to extract compilation errors."""
     errors = []
     
     # Common .NET error patterns
@@ -185,5 +167,54 @@ def _parse_build_errors(build_output: str) -> List[QuickBuildError]:
     
     return errors
 
+def test_azure_net_quickbuild():
+    """Test the azure_net_quickbuild function with different scenarios."""
+    
+    print("🧪 Testing Azure .NET QuickBuild MCP Server")
+    print("=" * 50)
+    
+    # Test 1: Invalid directory
+    print("\n📋 Test 1: Invalid directory")
+    result = azure_net_quickbuild_raw("/nonexistent/directory")
+    print(f"Success: {result['success']}")
+    print(f"Status: {result['status']}")
+    print(f"Errors: {len(result['errors'])}")
+    assert not result['success'], "Should fail for nonexistent directory"
+    
+    # Test 2: Current directory (should exist but may not have quickbuild)
+    print("\n📋 Test 2: Current directory (expecting quickbuild command not found)")
+    current_dir = os.getcwd()
+    result = azure_net_quickbuild_raw(current_dir, timeout_minutes=1)
+    print(f"Success: {result['success']}")
+    print(f"Status: {result['status']}")
+    print(f"Errors: {len(result['errors'])}")
+    if result['errors']:
+        print(f"First error: {result['errors'][0]['message']}")
+    
+    # Test 3: Test error parsing function
+    print("\n📋 Test 3: Error parsing functionality")
+    
+    sample_output = """
+Microsoft (R) Build Engine version 17.0.0+c9eb9dd64 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+MyProject.cs(15,5): error CS0103: The name 'invalidVariable' does not exist in the current context
+AnotherFile.cs(23): error CS1002: ; expected
+  Build FAILED.
+      0 Warning(s)
+      2 Error(s)
+"""
+    
+    errors = _parse_build_errors(sample_output)
+    print(f"Parsed {len(errors)} errors:")
+    for i, error in enumerate(errors, 1):
+        print(f"  {i}. File: {error.file_path}, Line: {error.line_number}, Message: {error.error_message}")
+    
+    assert len(errors) >= 2, "Should parse at least 2 errors from sample output"
+    
+    print("\n✅ All tests passed!")
+
 if __name__ == "__main__":
-    mcp.run()
+    test_azure_net_quickbuild()
