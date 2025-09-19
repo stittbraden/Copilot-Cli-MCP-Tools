@@ -1,0 +1,28 @@
+{
+  "servers": {
+  "Greet": {
+    "command": "python",
+    "args": [
+      "Q:\\Code\\Copilot-Cli-MCP-Tools\\mcp_servers\\boilerplate\\src\\server.py"
+    ]
+  },
+  "Azure Net Quickbuild MCP Server": {
+    "command": "python",
+    "args": [
+      "Q:\\Code\\Copilot-Cli-MCP-Tools\\mcp_servers\\azure-net-quickbuild\\src\\server.py"
+    ]
+  },
+
+
+  "Codebase Understanding MCP Server": {
+    "command": "python",
+    "args": [
+      "Q:\\Code\\Copilot-Cli-MCP-Tools\\mcp_servers\\codebase-understanding\\src\\server.py"
+    ]
+  }
+
+
+
+}
+}
+
