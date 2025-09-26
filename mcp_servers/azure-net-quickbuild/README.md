@@ -1,4 +1,4 @@
-#INSTALLATION
+# INSTALLATION
 
 To install this MCP on your computer/repo, you need to do the following
 
