@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"github": {
+			"url": "https://api.githubcopilot.com/mcp/"
+		},
+		"Azure Net Quickbuild MCP Server": {
+			"command": "python",
+			"args": [
+				"Q:\\Code\\mcp-tools\\azure-net-quickbuild\\src\\server.py"
+			]
+		}
+	}
+}

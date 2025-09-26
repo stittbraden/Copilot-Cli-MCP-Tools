@@ -1,3 +1,32 @@
+#INSTALLATION
+
+To install this MCP on your computer/repo, you need to do the following
+
+1: have this repo downloaded
+
+2: Go ahead and create a file called .mcp.json in your C:/Users/**USERNAME*/ directory 
+
+Mine looks like this: "C:\Users\mattsteele\.mcp.json"
+
+I have an example file of this in the repo as well, MAKE SURE TO ADJUST YOUR PATH of the server itself when making it, and remove the github one if you don't want to use that MCP(as it is separate)
+
+3: Once you have done this, Open visual studio and then open copilot chat. Once you have it open, click on the wrench icon and you should now see the server. 
+
+#file:tool-image-1.png
+
+Make sure that the checkbox itself is checked on to enable the MCP. After this please go ahead and click on the arrow next to the MCP to pull up the menu for it, and click restart. This ensures the server is running
+
+4: Next, you will need to add copilot instructions to make your copilot use this tool as it does not consciously check for it. I have an example markdown to paste. For this, navigate to your repository(NOT THE ROOT AREA) and inside of the service project you work on, go ahead and make a folder called .github. Inside of this folder, make a markdown called "copilot-instructions.md." Depending on your team, this may already exist. If it already exists, paste the example section under it. If not, then go ahead and just make it and paste my example as the only file contents.
+
+5: once you have done this, go ahead and open a new chat session and try the command "can you see if this works". If it prompts to use the tool, your setup worked! 
+
+## Troubleshooting
+
+If you run into troubleshooting issues, feel free to ping Matt Steele(ALIAS mattsteele@microsoft.com). 
+
+
+### Other Info (disregard unless curious)
+
 # Azure .NET QuickBuild MCP Tool
 
 This MCP tool provides quick .NET project compilation testing using Azure QuickBuild, helping you validate builds and identify compilation errors efficiently.
