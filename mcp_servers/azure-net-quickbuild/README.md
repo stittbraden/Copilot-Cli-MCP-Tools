@@ -1,4 +1,87 @@
-# Azure .NET QuickBuild MCP Server
+# Azure .NET QuickBuild MCP Tool
+
+This MCP tool provides quick .NET project compilation testing using Azure QuickBuild, helping you validate builds and identify compilation errors efficiently.
+
+## Usage
+
+### Basic Usage
+By default, the tool runs a standard quickbuild:
+```
+Use the azure_net_quickbuild tool to check if my .NET project compiles
+```
+
+### Parameters
+- `project_directory` (required): Absolute path to your .NET project directory
+- `timeout_minutes` (optional, default: 10): Maximum build time in minutes
+- `build_mode` (optional, default: "standard"): Build configuration
+
+### Build Modes
+
+#### Standard Build (Default)
+```
+Check if my project at /path/to/project compiles
+```
+- Runs: `quickbuild`
+- Best for: General compilation validation
+
+#### Debug Build
+When you need detailed build information:
+```
+Run a debug build on my project to see detailed compilation info
+```
+- Runs: `quickbuild -debug`
+- Use when: You need verbose build output for troubleshooting
+
+#### No Tests Build  
+When you want to skip tests for faster feedback:
+```
+Check if my project compiles but skip the tests
+```
+- Runs: `quickbuild -notest -debug`
+- Use when: You only want compilation validation without test execution
+
+## What You Get
+
+The tool returns:
+- ✅ **Build success/failure status**
+- 📋 **Structured error list** with file paths and line numbers
+- 🔍 **Filtered error output** (only the relevant error messages)
+- 📊 **Clear status message**
+
+## When to Use This Tool
+
+- **Before committing** code changes
+- **After refactoring** to validate compilation
+- **Quick syntax checking** without waiting for full CI builds
+- **Rapid development** feedback loops
+
+## Examples
+
+### Quick Compilation Check
+```
+Can you check if my .NET project at C:\MyProject compiles?
+```
+
+### Debug Build for Troubleshooting
+```
+I'm having build issues. Run a debug build on my project at C:\MyProject to see what's wrong.
+```
+
+### Skip Tests for Speed
+```
+Just check compilation without running tests for the project in C:\MyProject
+```
+
+## Tips
+
+- The tool automatically detects and parses .NET compilation errors
+- Error output is optimized for readability and focuses on actionable information
+- Build timeouts default to 10 minutes but can be adjusted if needed
+- Works with any .NET project that supports Azure QuickBuild
+
+---
+
+This tool provides fast feedback for .NET development without the overhead of full CI/CD pipeline execution.
 
 This Model Context Protocol (MCP) server provides integration with Azure .NET QuickBuild for testing project compilation from Copilot CLI.
 
