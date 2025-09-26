@@ -12,7 +12,7 @@ I have an example file of this in the repo as well, MAKE SURE TO ADJUST YOUR PAT
 
 3: Once you have done this, Open visual studio and then open copilot chat. Once you have it open, click on the wrench icon and you should now see the server. 
 
-#file:tool-image-1.png
+![MCP Server Setup](images/tool-image-1.png)
 
 Make sure that the checkbox itself is checked on to enable the MCP. After this please go ahead and click on the arrow next to the MCP to pull up the menu for it, and click restart. This ensures the server is running
 
